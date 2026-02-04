@@ -87,6 +87,13 @@ export const EnrollmentList: React.FC = () => {
     resource: 'courses',
     optionLabel: 'title',
     optionValue: 'id',
+    onSearch: (value) => [
+      {
+        field: 'search',
+        operator: 'eq',
+        value,
+      },
+    ],
   })
 
   const handleSubmit = (values: any) => {
