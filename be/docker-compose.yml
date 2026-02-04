@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: course-enrollment-db
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_DATABASE:-course_enrollment}
+    ports:
+      - "${LOCAL_DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - course-enrollment-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: course-enrollment-redis
+    ports:
+      - "${LOCAL_REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - course-enrollment-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: course-enrollment-api
+    env_file:
+      - .env
+    ports:
+      - "${LOCAL_API_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./keys:/app/keys
+    depends_on:
+      - postgres
+      - redis
+    command: npm run start:dev
+    networks:
+      - course-enrollment-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  course-enrollment-network:
+    driver: bridge
