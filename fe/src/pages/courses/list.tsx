@@ -64,17 +64,17 @@ export const CourseList: React.FC = () => {
           align="center"
           render={(_, record: ICourse) => (
             <Text>
-              {record.enrolled_count || 0} / {record.capacity}
+              {record.enrolledCount || 0} / {record.capacity}
             </Text>
           )}
         />
         <Table.Column
-          dataIndex="start_date"
+          dataIndex="startDate"
           title="Start Date"
           render={(value) => dayjs(value).format('MMM DD, YYYY')}
         />
         <Table.Column
-          dataIndex="end_date"
+          dataIndex="endDate"
           title="End Date"
           render={(value) => dayjs(value).format('MMM DD, YYYY')}
         />
@@ -82,8 +82,8 @@ export const CourseList: React.FC = () => {
           title="Status"
           render={(_, record: ICourse) => {
             const now = dayjs()
-            const endDate = dayjs(record.end_date)
-            const isFull = (record.enrolled_count || 0) >= record.capacity
+            const endDate = dayjs(record.endDate)
+            const isFull = (record.enrolledCount || 0) >= record.capacity
             const isEnded = now.isAfter(endDate)
 
             if (isEnded) {

@@ -5,11 +5,11 @@ import { CourseVisibility } from '@app/courses';
 import { BasePaginationRequest } from '@app/common/common.type';
 
 export class CourseFilterDto extends BasePaginationRequest {
-  @ApiPropertyOptional({ description: 'Search in title and summary' })
+  @ApiPropertyOptional({ description: 'Search in title' })
   @Expose()
   @IsString()
   @IsOptional()
-  search?: string;
+  title?: string;
 
   @ApiPropertyOptional({ enum: CourseVisibility })
   @Expose()
@@ -17,20 +17,20 @@ export class CourseFilterDto extends BasePaginationRequest {
   @IsOptional()
   visibility?: CourseVisibility;
 
-  @ApiPropertyOptional({ name: 'start_date_from' })
-  @Expose({ name: 'start_date_from' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsDateString()
   @IsOptional()
   startDateFrom?: string;
 
-  @ApiPropertyOptional({ name: 'start_date_to' })
-  @Expose({ name: 'start_date_to' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsDateString()
   @IsOptional()
   startDateTo?: string;
 
-  @ApiPropertyOptional({ name: 'instructor_id' })
-  @Expose({ name: 'instructor_id' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsString()
   @IsOptional()
   instructorId?: string;

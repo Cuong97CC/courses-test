@@ -1,4 +1,7 @@
-import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios'
+import axios, {
+  type AxiosInstance,
+  type InternalAxiosRequestConfig,
+} from 'axios'
 import { API_URL, TOKEN_KEY, REFRESH_TOKEN_KEY } from './constants'
 
 const axiosInstance: AxiosInstance = axios.create({
@@ -42,22 +45,21 @@ axiosInstance.interceptors.response.use(
         // Call refresh endpoint
         const response = await axios.post(
           `${API_URL}/auth/refresh-token`,
-          {},
           {
-            headers: {
-              Cookie: `refresh_token=${refreshToken}`,
-            },
+            refreshToken,
+          },
+          {
             withCredentials: true,
           },
         )
 
-        const { access_token } = response.data
+        const { accessToken } = response.data
 
         // Update stored token
-        localStorage.setItem(TOKEN_KEY, access_token)
+        localStorage.setItem(TOKEN_KEY, accessToken)
 
         // Retry original request with new token
-        originalRequest.headers.Authorization = `Bearer ${access_token}`
+        originalRequest.headers.Authorization = `Bearer ${accessToken}`
         return axiosInstance(originalRequest)
       } catch (refreshError) {
         // Refresh failed, clear auth and redirect to login

@@ -11,22 +11,22 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('enrollments')
 export class Enrollment {
-  @ApiProperty({ name: 'id' })
+  @ApiProperty()
   @Expose()
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @ApiProperty({ name: 'student_id' })
-  @Expose({ name: 'student_id' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'student_id', type: 'uuid' })
   studentId!: string;
 
-  @ApiProperty({ name: 'course_id' })
-  @Expose({ name: 'course_id' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'course_id', type: 'uuid' })
   courseId!: string;
 
-  @ApiProperty({ name: 'status', enum: EnrollmentStatus })
+  @ApiProperty({ enum: EnrollmentStatus })
   @Expose()
   @Column({
     type: 'enum',
@@ -35,28 +35,28 @@ export class Enrollment {
   })
   status!: EnrollmentStatus;
 
-  @ApiProperty({ name: 'requested_at' })
-  @Expose({ name: 'requested_at' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'requested_at', type: 'timestamp' })
   requestedAt!: Date;
 
-  @ApiProperty({ name: 'processed_at' })
-  @Expose({ name: 'processed_at' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'processed_at', type: 'timestamp', nullable: true })
   processedAt!: Date | null;
 
-  @ApiProperty({ name: 'processed_by_id' })
-  @Expose({ name: 'processed_by_id' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'processed_by_id', type: 'uuid', nullable: true })
   processedById!: string | null;
 
-  @ApiProperty({ name: 'created_at' })
-  @Expose({ name: 'created_at' })
+  @ApiProperty()
+  @Expose()
   @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt!: Date;
 
-  @ApiProperty({ name: 'updated_at' })
-  @Expose({ name: 'updated_at' })
+  @ApiProperty()
+  @Expose()
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt!: Date;
 }

@@ -76,12 +76,12 @@ export const MyEnrollments: React.FC = () => {
           render={(value) => <Text strong>{value}</Text>}
         />
         <Table.Column
-          dataIndex={['course', 'start_date']}
+          dataIndex={['course', 'startDate']}
           title="Start Date"
           render={(value) => dayjs(value).format('MMM DD, YYYY')}
         />
         <Table.Column
-          dataIndex={['course', 'end_date']}
+          dataIndex={['course', 'endDate']}
           title="End Date"
           render={(value) => dayjs(value).format('MMM DD, YYYY')}
         />
@@ -99,12 +99,12 @@ export const MyEnrollments: React.FC = () => {
           }}
         />
         <Table.Column
-          dataIndex="created_at"
+          dataIndex="createdAt"
           title="Requested At"
           render={(value) => dayjs(value).format('MMM DD, YYYY HH:mm')}
         />
         <Table.Column
-          dataIndex="approved_at"
+          dataIndex="approvedAt"
           title="Processed At"
           render={(value) =>
             value

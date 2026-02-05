@@ -11,11 +11,11 @@ export const USER_ROLE_VALUES = Object.values(USER_ROLES)
 export interface IUser {
   id: string
   email: string
-  first_name: string
-  last_name: string
+  firstName: string
+  lastName: string
   role: UserRole
-  created_at: string
-  updated_at: string
+  createdAt: string
+  updatedAt: string
 }
 
 export interface ILoginRequest {
@@ -24,8 +24,8 @@ export interface ILoginRequest {
 }
 
 export interface ILoginResponse {
-  access_token: string
-  refresh_token: string
+  accessToken: string
+  refreshToken: string
   user: IUser
 }
 

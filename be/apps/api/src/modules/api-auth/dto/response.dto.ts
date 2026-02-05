@@ -5,21 +5,19 @@ import { Expose, Type } from 'class-transformer';
 export class TokenPairDto {
   @ApiProperty({
     description: 'JWT access token',
-    name: 'access_token',
   })
-  @Expose({ name: 'access_token' })
+  @Expose()
   accessToken: string;
 
-  @ApiProperty({ description: 'Refresh token', name: 'refresh_token' })
-  @Expose({ name: 'refresh_token' })
+  @ApiProperty({ description: 'Refresh token' })
+  @Expose()
   refreshToken: string;
 
   @ApiProperty({
-    name: 'expires_in_sec',
     description: 'Access token expiration in seconds',
     example: 900,
   })
-  @Expose({ name: 'expires_in_sec' })
+  @Expose()
   expiresInSec: number;
 }
 
@@ -33,16 +31,14 @@ export class LoginResponseDto extends TokenPairDto {
 export class RefreshTokenResponseDto {
   @ApiProperty({
     description: 'JWT access token',
-    name: 'access_token',
   })
-  @Expose({ name: 'access_token' })
+  @Expose()
   accessToken: string;
 
   @ApiProperty({
-    name: 'expires_in_sec',
     description: 'Access token expiration in seconds',
     example: 900,
   })
-  @Expose({ name: 'expires_in_sec' })
+  @Expose()
   expiresInSec: number;
 }

@@ -5,27 +5,27 @@ import { BasePaginationRequest } from '@app/common/common.type';
 import { EnrollmentStatus } from '@app/enrollments';
 
 export class EnrollmentFilterDto extends BasePaginationRequest {
-  @ApiPropertyOptional({ name: 'student_id' })
-  @Expose({ name: 'student_id' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsString()
   @IsOptional()
   studentId?: string;
 
-  @ApiPropertyOptional({ name: 'course_id' })
-  @Expose({ name: 'course_id' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsString()
   @IsOptional()
   courseId?: string;
 
-  @ApiPropertyOptional({ name: 'created_at_from' })
-  @Expose({ name: 'created_at_from' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsDate()
   @Type(() => Date)
   @IsOptional()
   requestedAtFrom?: Date;
 
-  @ApiPropertyOptional({ name: 'created_at_to' })
-  @Expose({ name: 'created_at_to' })
+  @ApiPropertyOptional()
+  @Expose()
   @IsDate()
   @Type(() => Date)
   @IsOptional()

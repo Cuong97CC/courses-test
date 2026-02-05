@@ -4,7 +4,7 @@ export enum CourseVisibility {
 }
 
 export interface ICourseFilter {
-  search?: string;
+  title?: string;
   visibility?: CourseVisibility;
   startDateFrom?: string;
   startDateTo?: string;

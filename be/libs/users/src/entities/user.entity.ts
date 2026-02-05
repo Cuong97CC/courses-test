@@ -11,12 +11,12 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('users')
 export class User {
-  @ApiProperty({ name: 'id' })
+  @ApiProperty()
   @Expose()
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @ApiProperty({ name: 'email' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'varchar', length: 255, unique: true })
   email!: string;
@@ -25,7 +25,7 @@ export class User {
   @Column({ type: 'varchar', length: 255 })
   password!: string;
 
-  @ApiProperty({ name: 'role', enum: UserRole })
+  @ApiProperty({ enum: UserRole })
   @Expose()
   @Column({
     type: 'enum',
@@ -34,23 +34,23 @@ export class User {
   })
   role!: UserRole;
 
-  @ApiProperty({ name: 'first_name' })
-  @Expose({ name: 'first_name' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'first_name', type: 'varchar', length: 100 })
   firstName!: string;
 
-  @ApiProperty({ name: 'last_name' })
-  @Expose({ name: 'last_name' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'last_name', type: 'varchar', length: 100 })
   lastName!: string;
 
-  @ApiProperty({ name: 'created_at' })
-  @Expose({ name: 'created_at' })
+  @ApiProperty()
+  @Expose()
   @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt!: Date;
 
-  @ApiProperty({ name: 'updated_at' })
-  @Expose({ name: 'updated_at' })
+  @ApiProperty()
+  @Expose()
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt!: Date;
 }

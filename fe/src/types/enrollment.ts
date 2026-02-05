@@ -15,20 +15,20 @@ export const ENROLLMENT_STATUS_VALUES = Object.values(ENROLLMENT_STATUS)
 
 export interface IEnrollment {
   id: string
-  student_id: string
-  course_id: string
+  studentId: string
+  courseId: string
   status: EnrollmentStatus
-  approved_by?: string
-  approved_at?: string
+  approvedBy?: string
+  approvedAt?: string
   student?: IUser
   course?: ICourse
   approver?: IUser
-  created_at: string
-  updated_at: string
+  createdAt: string
+  updatedAt: string
 }
 
 export interface IEnrollmentCreateInput {
-  course_id: string
+  courseId: string
 }
 
 export interface IEnrollmentProcessInput {
@@ -45,6 +45,6 @@ export interface IEnrollmentFilterVariables {
   page?: number
   size?: number
   status?: EnrollmentStatus
-  course_id?: string
-  student_id?: string
+  courseId?: string
+  studentId?: string
 }

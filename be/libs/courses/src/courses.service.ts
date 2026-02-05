@@ -39,11 +39,10 @@ export class CoursesService {
   createQueryWithFilters(filters?: ICourseFilter) {
     const query = this.courseRepository.createQueryBuilder('course');
 
-    if (filters?.search) {
-      query.andWhere(
-        '(course.title ILIKE :search OR course.summary ILIKE :search)',
-        { search: `%${filters.search}%` },
-      );
+    if (filters?.title) {
+      query.andWhere('course.title ILIKE :title', {
+        title: `%${filters.title}%`,
+      });
     }
 
     if (filters?.visibility) {

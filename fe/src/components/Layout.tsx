@@ -80,7 +80,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   icon={<UserOutlined />}
                 />
                 <Space direction="vertical">
-                  <Text strong>{user.first_name}</Text>
+                  <Text strong>{user.firstName}</Text>
                 </Space>
               </Space>
             </Dropdown>

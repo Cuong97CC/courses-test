@@ -11,11 +11,11 @@ export const authProvider: AuthBindings = {
         password,
       })
 
-      const { access_token, refresh_token, user } = response.data
+      const { accessToken, refreshToken, user } = response.data
 
       // Store tokens and user
-      localStorage.setItem(TOKEN_KEY, access_token)
-      localStorage.setItem(REFRESH_TOKEN_KEY, refresh_token)
+      localStorage.setItem(TOKEN_KEY, accessToken)
+      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
       localStorage.setItem(USER_KEY, JSON.stringify(user))
 
       return {

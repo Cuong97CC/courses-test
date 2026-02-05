@@ -10,47 +10,47 @@ import { CourseVisibility } from '../courses.type';
 
 @Entity('course_versions')
 export class CourseVersion {
-  @ApiProperty({ name: 'id' })
+  @ApiProperty()
   @Expose()
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @ApiProperty({ name: 'course_id' })
-  @Expose({ name: 'course_id' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'course_id', type: 'uuid' })
   courseId!: string;
 
-  @ApiProperty({ name: 'title' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'varchar', length: 255 })
   title!: string;
 
-  @ApiProperty({ name: 'summary' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'text' })
   summary!: string;
 
-  @ApiProperty({ name: 'content' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'text' })
   content!: string;
 
-  @ApiProperty({ name: 'start_date' })
-  @Expose({ name: 'start_date' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'start_date', type: 'date' })
   startDate!: Date;
 
-  @ApiProperty({ name: 'end_date' })
-  @Expose({ name: 'end_date' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'end_date', type: 'date' })
   endDate!: Date;
 
-  @ApiProperty({ name: 'capacity' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'integer' })
   capacity!: number;
 
-  @ApiProperty({ name: 'visibility', enum: CourseVisibility })
+  @ApiProperty({ enum: CourseVisibility })
   @Expose()
   @Column({
     type: 'enum',
@@ -58,18 +58,18 @@ export class CourseVersion {
   })
   visibility!: CourseVisibility;
 
-  @ApiProperty({ name: 'version' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'integer' })
   version!: number;
 
-  @ApiProperty({ name: 'changed_by_id' })
-  @Expose({ name: 'changed_by_id' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'changed_by_id', type: 'uuid' })
   changedById!: string;
 
-  @ApiProperty({ name: 'changed_at' })
-  @Expose({ name: 'changed_at' })
+  @ApiProperty()
+  @Expose()
   @CreateDateColumn({ name: 'changed_at', type: 'timestamp' })
   changedAt!: Date;
 }

@@ -58,24 +58,24 @@ export const EnrollmentList: React.FC = () => {
           })
         }
 
-        if (values.course_id) {
+        if (values.courseId) {
           filters.push({
-            field: 'course_id',
+            field: 'courseId',
             operator: 'eq' as const,
-            value: values.course_id,
+            value: values.courseId,
           })
         }
 
-        if (values.created_at && values.created_at.length === 2) {
+        if (values.createdAt && values.createdAt.length === 2) {
           filters.push({
-            field: 'created_at_from',
+            field: 'createdAtFrom',
             operator: 'eq' as const,
-            value: values.created_at[0].startOf('day').toISOString(),
+            value: values.createdAt[0].startOf('day').toISOString(),
           })
           filters.push({
-            field: 'created_at_to',
+            field: 'createdAtTo',
             operator: 'eq' as const,
-            value: values.created_at[1].endOf('day').toISOString(),
+            value: values.createdAt[1].endOf('day').toISOString(),
           })
         }
 
@@ -87,13 +87,6 @@ export const EnrollmentList: React.FC = () => {
     resource: 'courses',
     optionLabel: 'title',
     optionValue: 'id',
-    onSearch: (value) => [
-      {
-        field: 'search',
-        operator: 'eq',
-        value,
-      },
-    ],
   })
 
   const handleSubmit = (values: any) => {
@@ -107,24 +100,24 @@ export const EnrollmentList: React.FC = () => {
       })
     }
 
-    if (values.course_id) {
+    if (values.courseId) {
       newFilters.push({
-        field: 'course_id',
+        field: 'courseId',
         operator: 'eq' as const,
-        value: values.course_id,
+        value: values.courseId,
       })
     }
 
-    if (values.created_at && values.created_at.length === 2) {
+    if (values.createdAt && values.createdAt.length === 2) {
       newFilters.push({
-        field: 'created_at_from',
+        field: 'createdAtFrom',
         operator: 'eq' as const,
-        value: values.created_at[0].startOf('day').toISOString(),
+        value: values.createdAt[0].startOf('day').toISOString(),
       })
       newFilters.push({
-        field: 'created_at_to',
+        field: 'createdAtTo',
         operator: 'eq' as const,
-        value: values.created_at[1].endOf('day').toISOString(),
+        value: values.createdAt[1].endOf('day').toISOString(),
       })
     }
 
@@ -135,25 +128,25 @@ export const EnrollmentList: React.FC = () => {
     if (filters && searchFormProps.form) {
       const formValues: any = {
         status: undefined,
-        course_id: undefined,
-        created_at: undefined,
+        courseId: undefined,
+        createdAt: undefined,
       }
 
       filters.forEach((filter: any) => {
         if (filter.field === 'status') {
           formValues.status = filter.value
-        } else if (filter.field === 'course_id') {
-          formValues.course_id = filter.value
-        } else if (filter.field === 'created_at_from') {
-          if (!formValues.created_at) {
-            formValues.created_at = []
+        } else if (filter.field === 'courseId') {
+          formValues.courseId = filter.value
+        } else if (filter.field === 'createdAtFrom') {
+          if (!formValues.createdAt) {
+            formValues.createdAt = []
           }
-          formValues.created_at[0] = dayjs(filter.value)
-        } else if (filter.field === 'created_at_to') {
-          if (!formValues.created_at) {
-            formValues.created_at = []
+          formValues.createdAt[0] = dayjs(filter.value)
+        } else if (filter.field === 'createdAtTo') {
+          if (!formValues.createdAt) {
+            formValues.createdAt = []
           }
-          formValues.created_at[1] = dayjs(filter.value)
+          formValues.createdAt[1] = dayjs(filter.value)
         }
       })
 
@@ -221,7 +214,7 @@ export const EnrollmentList: React.FC = () => {
             </Select>
           </Form.Item>
 
-          <Form.Item label="Course" name="course_id">
+          <Form.Item label="Course" name="courseId">
             <Select
               {...courseSelectProps}
               placeholder="Filter by course"
@@ -230,7 +223,7 @@ export const EnrollmentList: React.FC = () => {
             />
           </Form.Item>
 
-          <Form.Item label="Created Date" name="created_at">
+          <Form.Item label="Created Date" name="createdAt">
             <RangePicker format="MMM DD, YYYY" style={{ width: 280 }} />
           </Form.Item>
 
@@ -255,7 +248,7 @@ export const EnrollmentList: React.FC = () => {
 
       <Table {...tableProps} rowKey="id">
         <Table.Column
-          dataIndex={['student', 'first_name']}
+          dataIndex={['student', 'firstName']}
           title="Student"
           render={(value) => <Text strong>{value}</Text>}
         />
@@ -283,12 +276,12 @@ export const EnrollmentList: React.FC = () => {
           }}
         />
         <Table.Column
-          dataIndex="created_at"
+          dataIndex="createdAt"
           title="Requested At"
           render={(value) => dayjs(value).format('MMM DD, YYYY HH:mm')}
         />
         <Table.Column
-          dataIndex="approved_at"
+          dataIndex="approvedAt"
           title="Processed At"
           render={(value) =>
             value ? dayjs(value).format('MMM DD, YYYY HH:mm') : '-'

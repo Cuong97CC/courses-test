@@ -33,15 +33,15 @@ export class CreateCourseDto {
   @IsNotEmpty()
   content: string;
 
-  @ApiProperty({ example: '2026-03-01', name: 'start_date' })
-  @Expose({ name: 'start_date' })
+  @ApiProperty({ example: '2026-03-01' })
+  @Expose()
   @IsDate()
   @Type(() => Date)
   @IsNotEmpty()
   startDate: Date;
 
-  @ApiProperty({ example: '2026-06-01', name: 'end_date' })
-  @Expose({ name: 'end_date' })
+  @ApiProperty({ example: '2026-06-01' })
+  @Expose()
   @IsDate()
   @Type(() => Date)
   @IsNotEmpty()

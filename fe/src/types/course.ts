@@ -15,25 +15,25 @@ export interface ICourse {
   title: string
   summary: string
   content: string // HTML content from CKEditor
-  start_date: string
-  end_date: string
+  startDate: string
+  endDate: string
   capacity: number
   visibility: CourseVisibility
-  instructor_id: string
+  instructorId: string
   instructor?: IUser
   version: number
-  enrolled_count?: number
-  is_enrolled?: boolean
-  created_at: string
-  updated_at: string
+  enrolledCount?: number
+  isEnrolled?: boolean
+  createdAt: string
+  updatedAt: string
 }
 
 export interface ICourseCreateInput {
   title: string
   summary: string
   content: string
-  start_date: string
-  end_date: string
+  startDate: string
+  endDate: string
   capacity: number
   visibility: CourseVisibility
 }
@@ -47,6 +47,6 @@ export interface ICourseFilterVariables {
   size?: number
   search?: string
   visibility?: CourseVisibility
-  instructor_id?: string
+  instructorId?: string
   sort?: string
 }

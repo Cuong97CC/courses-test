@@ -24,13 +24,13 @@ export const CourseShow: React.FC = () => {
     useCustomMutation<ICourse>()
 
   const isStudent = permissions === USER_ROLES.STUDENT
-  const canEnroll = isStudent && course && !course.is_enrolled
+  const canEnroll = isStudent && course && !course.isEnrolled
 
   const handleEnroll = async () => {
     if (!course) return
 
     const enrollmentData: IEnrollmentCreateInput = {
-      course_id: course.id,
+      courseId: course.id,
     }
 
     createEnrollment(
@@ -72,10 +72,10 @@ export const CourseShow: React.FC = () => {
               >
                 {course.visibility}
               </Tag>
-              {dayjs().isAfter(dayjs(course.end_date)) && (
+              {dayjs().isAfter(dayjs(course.endDate)) && (
                 <Tag color="default">Ended</Tag>
               )}
-              {(course.enrolled_count || 0) >= course.capacity && (
+              {(course.enrolledCount || 0) >= course.capacity && (
                 <Tag color="red">Full</Tag>
               )}
             </Space>
@@ -94,7 +94,7 @@ export const CourseShow: React.FC = () => {
                 </>
               }
             >
-              {dayjs(course.start_date).format('MMM DD, YYYY')}
+              {dayjs(course.startDate).format('MMM DD, YYYY')}
             </Descriptions.Item>
             <Descriptions.Item
               label={
@@ -103,7 +103,7 @@ export const CourseShow: React.FC = () => {
                 </>
               }
             >
-              {dayjs(course.end_date).format('MMM DD, YYYY')}
+              {dayjs(course.endDate).format('MMM DD, YYYY')}
             </Descriptions.Item>
             <Descriptions.Item
               label={
@@ -112,7 +112,7 @@ export const CourseShow: React.FC = () => {
                 </>
               }
             >
-              {course.enrolled_count || 0} / {course.capacity}
+              {course.enrolledCount || 0} / {course.capacity}
             </Descriptions.Item>
             <Descriptions.Item
               label={
@@ -121,7 +121,7 @@ export const CourseShow: React.FC = () => {
                 </>
               }
             >
-              {course.instructor?.first_name || 'N/A'}
+              {course.instructor?.firstName || 'N/A'}
             </Descriptions.Item>
           </Descriptions>
 
@@ -133,12 +133,12 @@ export const CourseShow: React.FC = () => {
               loading={isEnrolling}
               disabled={
                 isEnrolling ||
-                dayjs().isAfter(dayjs(course.end_date)) ||
-                (course.enrolled_count || 0) >= course.capacity
+                dayjs().isAfter(dayjs(course.endDate)) ||
+                (course.enrolledCount || 0) >= course.capacity
               }
               style={{ marginBottom: '24px' }}
             >
-              {course.is_enrolled
+              {course.isEnrolled
                 ? 'Enrollment Requested'
                 : 'Enroll in this Course'}
             </Button>

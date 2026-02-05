@@ -32,22 +32,22 @@ export class Course {
   @Column({ type: 'text' })
   content!: string; // HTML content
 
-  @ApiProperty({ name: 'start_date' })
-  @Expose({ name: 'start_date' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'start_date', type: 'date' })
   startDate!: Date;
 
-  @ApiProperty({ name: 'end_date' })
-  @Expose({ name: 'end_date' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'end_date', type: 'date' })
   endDate!: Date;
 
-  @ApiProperty({ name: 'capacity' })
+  @ApiProperty()
   @Expose()
   @Column({ type: 'integer' })
   capacity!: number;
 
-  @ApiProperty({ name: 'visibility', enum: CourseVisibility })
+  @ApiProperty({ enum: CourseVisibility })
   @Expose()
   @Column({
     type: 'enum',
@@ -56,23 +56,23 @@ export class Course {
   })
   visibility!: CourseVisibility;
 
-  @ApiProperty({ name: 'version' })
+  @ApiProperty()
   @Expose()
   @VersionColumn()
   version!: number;
 
-  @ApiProperty({ name: 'created_by_id' })
-  @Expose({ name: 'created_by_id' })
+  @ApiProperty()
+  @Expose()
   @Column({ name: 'created_by_id', type: 'uuid' })
   createdById!: string;
 
-  @ApiProperty({ name: 'created_at' })
-  @Expose({ name: 'created_at' })
+  @ApiProperty()
+  @Expose()
   @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt!: Date;
 
-  @ApiProperty({ name: 'updated_at' })
-  @Expose({ name: 'updated_at' })
+  @ApiProperty()
+  @Expose()
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt!: Date;
 }

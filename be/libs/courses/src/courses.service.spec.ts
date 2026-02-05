@@ -187,7 +187,7 @@ describe('CoursesService', () => {
       expect(mockQueryBuilder.offset).toHaveBeenCalledWith(0);
     });
 
-    it('should filter by search term in title and summary', async () => {
+    it('should filter by title', async () => {
       // Arrange
       const searchTerm = 'NestJS';
       const mockQueryBuilder = {
@@ -205,13 +205,13 @@ describe('CoursesService', () => {
       );
 
       // Act
-      await service.paginate({ search: searchTerm });
+      await service.paginate({ title: searchTerm });
 
       // Assert
       expect(mockQueryBuilder.andWhere).toHaveBeenCalledWith(
         expect.stringContaining('ILIKE'),
         expect.objectContaining({
-          search: `%${searchTerm}%`,
+          title: `%${searchTerm}%`,
         }),
       );
     });

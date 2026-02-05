@@ -74,7 +74,7 @@ export const CourseEdit: React.FC = () => {
 
         <Form.Item
           label="Start Date"
-          name="start_date"
+          name="startDate"
           rules={[{ required: true, message: 'Please select start date' }]}
           getValueProps={(value) => ({
             value: value ? dayjs(value) : undefined,
@@ -86,7 +86,7 @@ export const CourseEdit: React.FC = () => {
 
         <Form.Item
           label="End Date"
-          name="end_date"
+          name="endDate"
           rules={[{ required: true, message: 'Please select end date' }]}
           getValueProps={(value) => ({
             value: value ? dayjs(value) : undefined,
