@@ -5,31 +5,21 @@ import type { ILoginRequest, ILoginResponse, IUser } from '../types'
 
 export const authProvider: AuthBindings = {
   login: async ({ email, password }: ILoginRequest) => {
-    try {
-      const response = await axiosInstance.post<ILoginResponse>('/auth/login', {
-        email,
-        password,
-      })
+    const response = await axiosInstance.post<ILoginResponse>('/auth/login', {
+      email,
+      password,
+    })
 
-      const { accessToken, refreshToken, user } = response.data
+    const { accessToken, refreshToken, user } = response.data
 
-      // Store tokens and user
-      localStorage.setItem(TOKEN_KEY, accessToken)
-      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
-      localStorage.setItem(USER_KEY, JSON.stringify(user))
+    // Store tokens and user
+    localStorage.setItem(TOKEN_KEY, accessToken)
+    localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
+    localStorage.setItem(USER_KEY, JSON.stringify(user))
 
-      return {
-        success: true,
-        redirectTo: '/',
-      }
-    } catch (error: any) {
-      return {
-        success: false,
-        error: {
-          name: 'LoginError',
-          message: error.response?.data?.message || 'Invalid email or password',
-        },
-      }
+    return {
+      success: true,
+      redirectTo: '/',
     }
   },
 

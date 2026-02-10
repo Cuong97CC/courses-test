@@ -3,6 +3,7 @@ import { Form, Input, Button, Card, Typography, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { useLogin } from '@refinedev/core'
 import type { ILoginRequest } from '../types'
+import { getErrorMessage } from '../utils/helper'
 
 const { Title, Text } = Typography
 
@@ -11,8 +12,8 @@ export const Login: React.FC = () => {
 
   const onFinish = (values: ILoginRequest) => {
     login(values, {
-      onError: (error) => {
-        message.error(error.message || 'Login failed')
+      onError: (error: any) => {
+        message.error(getErrorMessage(error))
       },
     })
   }

@@ -30,7 +30,7 @@ Create a `.env` file base on `.env.example`
 Generate keys for jwt and refresh token (use the same keys for jwt and refresh token for local development, production keys should be different)
 
 ```bash
-./scripts/generate-keys.sh
+sh ./scripts/generate-keys.sh
 ```
 
 ### Run project

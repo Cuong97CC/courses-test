@@ -1,4 +1,5 @@
 import axios, {
+  HttpStatusCode,
   type AxiosInstance,
   type InternalAxiosRequestConfig,
 } from 'axios'
@@ -25,14 +26,19 @@ axiosInstance.interceptors.request.use(
   },
 )
 
-// Response interceptor for token refresh
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config
 
+    const ignoreAuthUrls = ['/auth/login', '/auth/refresh-token']
+
     // If 401 and not already retried
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    if (
+      error.response?.status === HttpStatusCode.Unauthorized &&
+      !ignoreAuthUrls.includes(originalRequest.url) &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true
 
       try {
